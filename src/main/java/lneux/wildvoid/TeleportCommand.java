@@ -37,17 +37,18 @@ public class TeleportCommand implements CommandExecutor {
             @Override
             public void run() {
                 Location platformLoc = getRandomLocation(origin, 100);
-                buildPlatform(platformLoc, platformBlock);
 
+                // Now schedule block placement and teleport on main thread
                 new BukkitRunnable() {
                     @Override
                     public void run() {
-                        player.teleport(platformLoc.add(1, 1, 1)); // Center above platform
+                        buildPlatform(platformLoc, platformBlock);
+                        player.teleport(platformLoc.clone().add(1, 1, 1));
                         player.sendMessage(getMsg("messages.teleporting"));
                     }
                 }.runTask(Wildvoid.getInstance());
             }
-        }.runTaskLaterAsynchronously(Wildvoid.getInstance(), cooldown * 20L); // convert seconds to ticks
+        }.runTaskLater(Wildvoid.getInstance(), cooldown * 20L);
 
         return true;
     }
