@@ -1,0 +1,6 @@
+platform-block: OBSIDIAN
+delay-seconds: 60
+messages:
+  generating: "Generating platform..."
+  teleporting: "Teleporting now!"
+  cooldown: "You must wait before teleporting again!"

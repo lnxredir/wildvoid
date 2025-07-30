@@ -1,0 +1,9 @@
+name: wildvoid
+version: '1.0-SNAPSHOT'
+main: lneux.wildvoid.Wildvoid
+api-version: '1.20'
+commands:
+  rtp:
+    description: Random teleport
+  wild:
+    description: Wild teleport
